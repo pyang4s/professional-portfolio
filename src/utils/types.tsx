@@ -15,4 +15,6 @@ export type Projects = {
   description: string;
   imageUrl: string;
   gitHubLink: string;
+  language: string;
+  framework: string;
 };
