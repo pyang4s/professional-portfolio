@@ -17,4 +17,5 @@ export type Projects = {
   gitHubLink: string;
   language: string;
   framework: string;
+  path: string;
 };
