@@ -11,7 +11,7 @@ export const myProfile: UserProfile = {
   phone: "",
   email: "mailto:pyang4@gmail.com",
   summary:
-    "Welcome to my portfolio! I'm a full stack developer with 2 years of professional experience in mobile development and automated testing. With over 5 years of education and training, I've expanded my skillsets and knowledge of both front and back end developement.",
+    "Welcome to my portfolio! I'm a full stack developer with 2 years of professional experience in mobile development and automated testing. With over 5 years of education and training, I've expanded my skillsets and knowledge of both front and back end development.",
 };
 
 export const project1: Projects = {

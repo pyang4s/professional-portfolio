@@ -20,7 +20,7 @@ export function Header() {
   return (
     <div className="App-header">
       <Social />
-      {location.pathname == "/" ? (
+      {location.pathname === "/" ? (
         <HeaderGreeting {...myProfile} />
       ) : (
         <ProjectGreeting />
