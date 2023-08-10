@@ -1,17 +1,18 @@
 import { Projects, UserProfile } from "./types";
 import portfolioImg from "../assets/images/portfolio.png";
 
-export const myProfile: UserProfile = {
-  name: "Pa Nhia Yang",
-  title: "Full-Stack Developer",
+export let myProfile: UserProfile = {
+  name: "test",
+  title: "",
   address: "",
   city: "",
   state: "",
   zip: "",
   phone: "",
-  email: "mailto:pyang4@gmail.com",
-  summary:
-    "Welcome to my portfolio! I'm a full stack developer with 2 years of professional experience in mobile development and automated testing. With over 5 years of education and training, I've expanded my skillsets and knowledge of both front and back end developement.",
+  email: "",
+  summary: "",
+  linkedin_url: "",
+  github_url: "",
 };
 
 export const project1: Projects = {
@@ -33,10 +34,4 @@ export const project2: Projects = {
   language: "",
   framework: "",
   path: "/",
-};
-
-export const socialLinks = {
-  linkedinUrl: "https://www.linkedin.com/in/yang-panhia/",
-  gitHubUrl: "https://github.com/pyang4s?tab=repositories",
-  email: myProfile.email,
 };

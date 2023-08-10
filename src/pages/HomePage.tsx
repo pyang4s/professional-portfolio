@@ -1,11 +1,19 @@
 import { NavLink } from "react-router-dom";
 import { UserProfile } from "../utils/types";
 import { myProfile } from "../utils/constants";
+import { useEffect, useState } from "react";
+import { MapGeneralInfo, myInfo } from "../utils/server";
 
 export default function HomePage() {
+  const [profile, setProfile] = useState(myProfile);
+
+  useEffect(() => {
+    MapGeneralInfo();
+    setProfile(myInfo);
+  });
   return (
     <div className="App">
-      <Summary {...myProfile} />
+      <Summary {...profile} />
       <Portfolio />
     </div>
   );

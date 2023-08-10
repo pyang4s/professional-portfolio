@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ImHome } from "react-icons/im";
 import "../App.css";
 import { useLocation, NavLink } from "react-router-dom";
 import { UserProfile } from "./types";
-import { myProfile, socialLinks } from "./constants";
 import linkedInLogo from "../assets/logo/linkedInLogo.png";
 import gitHubLogo from "../assets/logo/gitHubLogo.jpeg";
 import emailLogo from "../assets/logo/emailLogo.png";
+import { MapGeneralInfo, myInfo } from "./server";
+import { myProfile } from "./constants";
 
 export const Navigation = () => (
   <>
@@ -14,33 +15,39 @@ export const Navigation = () => (
   </>
 );
 
-export function Header() {
+const Header = () => {
+  MapGeneralInfo();
   const location = useLocation();
+  const [profile, setProfile] = useState(myProfile);
+
+  useEffect(() => {
+    setProfile(myInfo);
+  });
 
   return (
     <div className="App-header">
-      <Social />
-      {location.pathname == "/" ? (
-        <HeaderGreeting {...myProfile} />
+      <Social {...profile} />
+      {location.pathname === "/" ? (
+        <HeaderGreeting {...profile} />
       ) : (
         <ProjectGreeting />
       )}
     </div>
   );
-}
+};
 
-export function Social() {
+export function Social({ linkedin_url, github_url, email }: UserProfile) {
   return (
     <div className="top">
-      <a href={socialLinks.linkedinUrl}>
+      <a href={linkedin_url}>
         <img className="icon" src={linkedInLogo} alt="LinkedIn" />
       </a>
 
-      <a href={socialLinks.gitHubUrl}>
+      <a href={github_url}>
         <img className="icon" src={gitHubLogo} alt="GitHubRepo" />
       </a>
 
-      <a href={socialLinks.email}>
+      <a href={"mailto:" + email}>
         <img className="icon" src={emailLogo} alt="Email" />
       </a>
     </div>

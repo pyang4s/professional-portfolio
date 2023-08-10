@@ -1,6 +1,6 @@
 import { project1 } from "../utils/constants";
 import { Projects } from "../utils/types";
-import { useLocation, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function ProjectsPage() {
   return <Portfolio />;
