@@ -2,7 +2,7 @@ import { Projects, UserProfile } from "./types";
 import portfolioImg from "../assets/images/portfolio.png";
 
 export let myProfile: UserProfile = {
-  name: "",
+  name: "test",
   title: "",
   address: "",
   city: "",
