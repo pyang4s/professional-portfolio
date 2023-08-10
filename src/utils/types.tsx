@@ -8,6 +8,8 @@ export type UserProfile = {
   phone: string;
   email: string;
   summary: string;
+  linkedin_url: string;
+  github_url: string;
 };
 
 export type Projects = {
