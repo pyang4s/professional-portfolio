@@ -3,7 +3,6 @@ import "../App.css";
 import { initializeApp } from "firebase/app";
 import { getFirestore, getDoc, doc } from "firebase/firestore";
 import { UserProfile } from "./types";
-import { useEffect, useState } from "react";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -31,12 +30,11 @@ const getDb = () => {
   return db;
 };
 
-export async function MapGeneralInfo(): Promise<UserProfile> {
+export async function MapGeneralInfo() {
   const collection_name = "myinfo";
   const document_name = "general_info";
   const docSnap = await getDoc(doc(getDb(), collection_name, document_name));
   const data = docSnap.data();
-  let myInfo: UserProfile;
 
   if (data) {
     myInfo = {
@@ -54,19 +52,18 @@ export async function MapGeneralInfo(): Promise<UserProfile> {
     };
   } else {
     myInfo = {
-      name: "null",
-      title: "null",
-      address: "null",
-      city: "null",
-      state: "null",
-      zip: "null",
-      phone: "null",
-      email: "null",
-      summary: "null",
-      linkedin_url: "null",
-      github_url: "null",
+      name: "",
+      title: "",
+      address: "",
+      city: "",
+      state: "",
+      zip: "",
+      phone: "",
+      email: "",
+      summary: "",
+      linkedin_url: "",
+      github_url: "",
     };
     console.log("No profile information retreived");
   }
-  return myInfo;
 }
