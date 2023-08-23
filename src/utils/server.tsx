@@ -3,14 +3,14 @@ import "../App.css";
 import { initializeApp } from "firebase/app";
 import { getFirestore, getDoc, doc } from "firebase/firestore";
 import { UserProfile } from "./types";
+import { useState } from "react";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 let db: any = false;
-export let myInfo: UserProfile;
 
-const getDb = () => {
+export const getDb = () => {
   if (!db) {
     // Your web app's Firebase configuration
     const firebaseConfig = {
@@ -30,40 +30,7 @@ const getDb = () => {
   return db;
 };
 
-export async function MapGeneralInfo() {
-  const collection_name = "myinfo";
-  const document_name = "general_info";
-  const docSnap = await getDoc(doc(getDb(), collection_name, document_name));
-  const data = docSnap.data();
+function GetProfile(){
 
-  if (data) {
-    myInfo = {
-      name: data.first_name + " " + data.last_name,
-      title: data.title,
-      address: data.address,
-      city: data.city,
-      state: data.state,
-      zip: data.zip,
-      phone: data.phone,
-      email: data.email,
-      summary: data.summary,
-      linkedin_url: data.linkedin_url,
-      github_url: data.github_url,
-    };
-  } else {
-    myInfo = {
-      name: "",
-      title: "",
-      address: "",
-      city: "",
-      state: "",
-      zip: "",
-      phone: "",
-      email: "",
-      summary: "",
-      linkedin_url: "",
-      github_url: "",
-    };
-    console.log("No profile information retreived");
-  }
 }
+

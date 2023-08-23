@@ -6,23 +6,59 @@ import { UserProfile } from "./types";
 import linkedInLogo from "../assets/logo/linkedInLogo.png";
 import gitHubLogo from "../assets/logo/gitHubLogo.jpeg";
 import emailLogo from "../assets/logo/emailLogo.png";
-import { MapGeneralInfo, myInfo } from "./server";
-import { myProfile } from "./constants";
+import { getDb } from "./server";
+import { doc, getDoc } from "firebase/firestore";
 
 export const Navigation = () => (
   <>
     <Header />
   </>
 );
+export let myProfile: UserProfile = {
+  name: "",
+  title: "",
+  address: "",
+  city: "",
+  state: "",
+  zip: "",
+  phone: "",
+  email: "",
+  summary: "",
+  linkedin_url: "",
+  github_url: "",
+};
 
 const Header = () => {
-  MapGeneralInfo();
+  const db = getDb(); 
   const location = useLocation();
-  const [profile, setProfile] = useState(myProfile);
+  const [profile, setProfile] = useState<UserProfile>(myProfile);
+  const collection_name = "myinfo";
+  const document_name = "general_info";
 
+  const fetchPost = async () => {
+    const data = await getDoc(doc(db, collection_name, document_name))
+    const profile = data.data(); 
+    if(profile){
+      myProfile = {
+        name: profile.first_name + " " + profile.last_name,
+        title: profile.title,
+        address: profile.address,
+        city: profile.city,
+        state: profile.state,
+        zip: profile.zip,
+        phone: profile.phone,
+        email: profile.email,
+        summary: profile.summary,
+        linkedin_url: profile.linkedin_url,
+        github_url: profile.github_url,
+      };
+      setProfile(myProfile); 
+    }
+  }
+  
   useEffect(() => {
-    setProfile(myInfo);
-  });
+    fetchPost(); 
+  }, []);
 
   return (
     <div className="App-header">

@@ -1,20 +1,6 @@
 import { Projects, UserProfile } from "./types";
 import portfolioImg from "../assets/images/portfolio.png";
 
-export let myProfile: UserProfile = {
-  name: "test",
-  title: "",
-  address: "",
-  city: "",
-  state: "",
-  zip: "",
-  phone: "",
-  email: "",
-  summary: "",
-  linkedin_url: "",
-  github_url: "",
-};
-
 export const project1: Projects = {
   name: "Portfolio",
   description:
